@@ -1,0 +1,326 @@
+==========================================
+개인 정보 관리 시스템 - 쿼리 실행 결과
+==========================================
+생성 시간: 2026-09-28 20:54:06
+
+==========================================
+[쿼리 1] 모든 활성 사용자 조회 (기본 조회 + WHERE)
+무엇을 확인: 현재 활성 상태인 사용자 전체 목록
+==========================================
+user_id  username       email                full_name      phone          created_at         
+-------  -------------  -------------------  -------------  -------------  -------------------
+1        john_doe       john@example.com     John Doe       010-1111-1111  2026-09-28 11:53:08
+2        jane_smith     jane@example.com     Jane Smith     010-2222-2222  2026-09-28 11:53:08
+3        park_min       park@example.com     Park Min-jun   010-3333-3333  2026-09-28 11:53:08
+4        kim_sung       kim@example.com      Kim Sung-ho    010-4444-4444  2026-09-28 11:53:08
+5        lee_ji         lee@example.com      Lee Ji-woo     010-5555-5555  2026-09-28 11:53:08
+6        choi_yu        choi@example.com     Choi Yu-jin    010-6666-6666  2026-09-28 11:53:08
+7        jung_ho        jung@example.com     Jung Ho-sung   010-7777-7777  2026-09-28 11:53:08
+8        alex_brown     alex@example.com     Alex Brown     010-8888-8888  2026-09-28 11:53:08
+10       michael_scott  michael@example.com  Michael Scott  010-1010-1010  2026-09-28 11:53:08
+11       emily_davis    emily@example.com    Emily Davis    010-1111-2222  2026-09-28 11:53:08
+12       david_lee      david@example.com    David Lee      010-2222-3333  2026-09-28 11:53:08
+13       sophia_wang    sophia@example.com   Sophia Wang    010-3333-4444  2026-09-28 11:53:08
+14       james_wilson   james@example.com    James Wilson   010-4444-5555  2026-09-28 11:53:08
+15       olivia_martin  olivia@example.com   Olivia Martin  010-5555-6666  2026-09-28 11:53:08
+
+==========================================
+[쿼리 2] 특정 카테고리의 항목 조회 (WHERE + ORDER BY)
+무엇을 확인: documents 카테고리의 모든 항목을 최신순으로 조회
+==========================================
+item_id  title                   content_preview                 file_size  created_at           category_name
+-------  ----------------------  ------------------------------  ---------  -------------------  -------------
+1        Passport Copy           Scanned copy of passport KR123  2048000    2026-09-28 11:53:08  documents    
+2        Driver License          Driver license front and back   1536000    2026-09-28 11:53:08  documents    
+11       Visa Information        US Visa details and approval l  2560000    2026-09-28 11:53:08  documents    
+21       Government ID           National ID card scan           3145728    2026-09-28 11:53:08  documents    
+31       Employment Contract     Employment contract with curre  2048000    2026-09-28 11:53:08  documents    
+40       Insurance Policy        Health insurance policy detail  2560000    2026-09-28 11:53:08  documents    
+49       Rental Agreement        Apartment rental contract and   2560000    2026-09-28 11:53:08  documents    
+53       Copyright Registration  Copyright registration certifi  1024000    2026-09-28 11:53:08  documents    
+
+==========================================
+[쿼리 3] 중요 표시된 항목 조회 (WHERE + ORDER BY + LIMIT)
+무엇을 확인: 중요도 높은 항목 상위 10개 조회
+==========================================
+item_id  title                   category_id  file_size  created_at         
+-------  ----------------------  -----------  ---------  -------------------
+1        Passport Copy           1            2048000    2026-09-28 11:53:08
+2        Driver License          1            1536000    2026-09-28 11:53:08
+3        Bank Account Info       5            256        2026-09-28 11:53:08
+6        University Certificate  9            1024000    2026-09-28 11:53:08
+8        Blood Type Record       6            256        2026-09-28 11:53:08
+10       Project Alpha Report    8            2097152    2026-09-28 11:53:08
+11       Visa Information        1            2560000    2026-09-28 11:53:08
+12       Wedding Planning Notes  4            1048576    2026-09-28 11:53:08
+13       Wedding Photos          2            104857600  2026-09-28 11:53:08
+14       Investment Portfolio    5            2097152    2026-09-28 11:53:08
+
+==========================================
+[쿼리 4] 특정 사용자의 최근 30일 항목 조회 (WHERE + 날짜 필터 + ORDER BY)
+무엇을 확인: john_doe 사용자의 최근 30일간 생성된 항목
+==========================================
+item_id  title                      content                    username  created_at         
+-------  -------------------------  -------------------------  --------  -------------------
+1        Passport Copy              Scanned copy of passport   john_doe  2026-09-28 11:53:08
+2        Driver License             Driver license front and   john_doe  2026-09-28 11:53:08
+3        Bank Account Info          Main bank account details  john_doe  2026-09-28 11:53:08
+4        Family Photos 2024         Collection of family phot  john_doe  2026-09-28 11:53:08
+5        Daily Notes January        Notes from January meetin  john_doe  2026-09-28 11:53:08
+6        University Certificate     Bachelor degree certifica  john_doe  2026-09-28 11:53:08
+7        Close Friends List         Contact information for c  john_doe  2026-09-28 11:53:08
+8        Blood Type Record          Blood type O+, allergies:  john_doe  2026-09-28 11:53:08
+9        Summer Vacation Plan 2024  Japan trip planning docum  john_doe  2026-09-28 11:53:08
+10       Project Alpha Report       Q1 2024 project alpha fin  john_doe  2026-09-28 11:53:08
+
+==========================================
+[쿼리 5] 사용자별 항목 조회 (INNER JOIN)
+무엇을 확인: 각 사용자가 저장한 항목의 제목과 카테고리
+==========================================
+user_id  username    item_id  title                      category_name
+-------  ----------  -------  -------------------------  -------------
+1        john_doe    1        Passport Copy              documents    
+1        john_doe    2        Driver License             documents    
+1        john_doe    3        Bank Account Info          finance      
+1        john_doe    4        Family Photos 2024         photos       
+1        john_doe    5        Daily Notes January        notes        
+1        john_doe    6        University Certificate     educational  
+1        john_doe    7        Close Friends List         contacts     
+1        john_doe    8        Blood Type Record          health       
+1        john_doe    9        Summer Vacation Plan 2024  travel       
+1        john_doe    10       Project Alpha Report       work         
+2        jane_smith  11       Visa Information           documents    
+2        jane_smith  12       Wedding Planning Notes     notes        
+2        jane_smith  13       Wedding Photos             photos       
+2        jane_smith  14       Investment Portfolio       finance      
+2        jane_smith  15       Family Contacts            contacts     
+2        jane_smith  16       Dental Records             health       
+2        jane_smith  17       TOEIC Certificate          educational  
+2        jane_smith  18       Marketing Campaign 2024    work         
+2        jane_smith  19       Travel Budget Tracking     travel       
+2        jane_smith  20       Life Goals 2024-2026       notes        
+3        park_min    21       Government ID              documents    
+3        park_min    22       Research Notes             notes        
+3        park_min    23       Medication List            health       
+3        park_min    24       Lab Results Analysis       work         
+3        park_min    25       Master Degree Certificate  educational  
+3        park_min    26       Europe Trip Itinerary      travel       
+3        park_min    27       Savings Goal Plan          finance      
+3        park_min    28       Conference Photos 2024     photos       
+3        park_min    29       Academic Colleagues        contacts     
+3        park_min    30       Paper Draft Review         notes        
+
+==========================================
+[쿼리 6] 항목 상세 정보 조회 (INNER JOIN)
+무엇을 확인: 항목과 그 연결된 상세 정보 조회
+==========================================
+item_id  title                      category_name  location               status  priority  expiry_date
+-------  -------------------------  -------------  ---------------------  ------  --------  -----------
+1        Passport Copy              documents      Safe deposit box       active  5         2034-12-31 
+3        Bank Account Info          finance        Digital wallet         active  5                    
+6        University Certificate     educational    Personal file cabinet  active  5         2099-12-31 
+8        Blood Type Record          health         Medical file           active  5                    
+11       Visa Information           documents      Passport holder        active  5         2032-05-15 
+13       Wedding Photos             photos         Digital backup         active  5                    
+16       Dental Records             health         Medical records        active  5                    
+21       Government ID              documents      Government office      active  5         2025-12-31 
+23       Medication List            health         Medical clinic         active  5         2025-06-30 
+24       Lab Results Analysis       work           Research storage       active  5                    
+25       Master Degree Certificate  educational    Education file         active  5         2099-12-31 
+2        Driver License             documents      Home office desk       active  4         2029-03-20 
+10       Project Alpha Report       work           Work laptop            active  4                    
+12       Wedding Planning Notes     notes          Wedding album          active  4                    
+14       Investment Portfolio       finance        Investment file        active  4                    
+17       TOEIC Certificate          educational    Education folder       active  4         2099-12-31 
+22       Research Notes             notes          Research folder        active  4                    
+27       Savings Goal Plan          finance        Finance folder         active  4                    
+
+==========================================
+[쿼리 7] 태그로 항목 조회 (INNER JOIN + 다:다 관계)
+무엇을 확인: 'urgent' 태그가 붙은 모든 항목 조회
+==========================================
+item_id  title                      username    category_name  tag_name  created_at         
+-------  -------------------------  ----------  -------------  --------  -------------------
+9        Summer Vacation Plan 2024  john_doe    travel         urgent    2026-09-28 11:53:08
+12       Wedding Planning Notes     jane_smith  notes          urgent    2026-09-28 11:53:08
+44       Open Source Contributions  lee_ji      work           urgent    2026-09-28 11:53:08
+
+==========================================
+[쿼리 8] 사용자별 항목 현황 (LEFT JOIN - 항목이 없는 사용자도 표시)
+무엇을 확인: 모든 사용자 및 그들의 항목 수 (항목이 없는 사용자도 포함)
+==========================================
+user_id  username       email                item_count
+-------  -------------  -------------------  ----------
+1        john_doe       john@example.com     10        
+2        jane_smith     jane@example.com     10        
+3        park_min       park@example.com     10        
+4        kim_sung       kim@example.com      10        
+5        lee_ji         lee@example.com      10        
+6        choi_yu        choi@example.com     10        
+7        jung_ho        jung@example.com     0         
+8        alex_brown     alex@example.com     0         
+9        sarah_connor   sarah@example.com    0         
+10       michael_scott  michael@example.com  0         
+11       emily_davis    emily@example.com    0         
+12       david_lee      david@example.com    0         
+13       sophia_wang    sophia@example.com   0         
+14       james_wilson   james@example.com    0         
+15       olivia_martin  olivia@example.com   0         
+
+==========================================
+[쿼리 9] 카테고리별 항목 수 및 총 파일 크기 (GROUP BY + COUNT + SUM)
+무엇을 확인: 각 카테고리의 항목 개수와 저장된 파일의 총 용량
+==========================================
+category_id  category_name  item_count  total_size_bytes  total_size_mb
+-----------  -------------  ----------  ----------------  -------------
+4            notes          10          8398336           8.01         
+1            documents      8           17481728          16.67        
+3            contacts       6           11776             0.01         
+9            educational    6           9289728           8.86         
+5            finance        6           4171520           3.98         
+6            health         6           3073280           2.93         
+2            photos         6           424673280         405.0        
+7            travel         6           7342080           7.0          
+8            work           6           17829888          17.0         
+10           personal       0           0                 0.0          
+
+==========================================
+[쿼리 10] 항목 우선순위별 집계 (GROUP BY + COUNT)
+무엇을 확인: 우선순위별 항목 개수와 평균 파일 크기
+==========================================
+priority  item_count  avg_file_size  max_file_size
+--------  ----------  -------------  -------------
+5         11          10944582.0     104857600    
+4         7           1414437.0      2097152      
+3         5           12373299.0     52428800     
+2         6           5244587.0      31457280     
+1         1           512.0          512          
+
+==========================================
+[쿼리 11] 태그별 항목 수 집계 (GROUP BY + COUNT)
+무엇을 확인: 각 태그가 붙은 항목의 개수
+==========================================
+tag_id  tag_name       usage_count
+------  -------------  -----------
+15      work           9          
+10      permanent      8          
+20      important      7          
+3       private        7          
+8       favorite       5          
+13      legal          4          
+19      confidential   3          
+12      financial      3          
+17      friends        3          
+4       shared         3          
+9       temporary      3          
+1       urgent         3          
+7       backup         2          
+16      family         2          
+5       review_needed  2          
+
+==========================================
+[쿼리 12] 평균 파일 크기보다 큰 파일 조회 (서브쿼리)
+무엇을 확인: 전체 평균 파일 크기보다 더 큰 항목 조회
+==========================================
+item_id  title                   username    category_name  file_size  avg_file_size
+-------  ----------------------  ----------  -------------  ---------  -------------
+51       Portfolio Photos        choi_yu     photos         157286400  8204527.0    
+13       Wedding Photos          jane_smith  photos         104857600  8204527.0    
+4        Family Photos 2024      john_doe    photos         52428800   8204527.0    
+37       Corporate Events        kim_sung    photos         52428800   8204527.0    
+28       Conference Photos 2024  park_min    photos         31457280   8204527.0    
+46       Pet Photos              lee_ji      photos         26214400   8204527.0    
+
+==========================================
+[쿼리 13] 항목이 가장 많은 사용자의 상세 정보 (서브쿼리 + 최댓값)
+무엇을 확인: 가장 많은 항목을 저장한 사용자와 그의 항목 목록
+==========================================
+user_id  username    email             item_count
+-------  ----------  ----------------  ----------
+1        john_doe    john@example.com  10        
+2        jane_smith  jane@example.com  10        
+3        park_min    park@example.com  10        
+4        kim_sung    kim@example.com   10        
+5        lee_ji      lee@example.com   10        
+6        choi_yu     choi@example.com  10        
+
+==========================================
+[쿼리 14] item_details의 상태 업데이트 (UPDATE)
+무엇을 확인: 만료 날짜가 지난 항목을 'expired' 상태로 업데이트
+업데이트 전 - 업데이트 예정 행 수:
+==========================================
+count_to_update
+---------------
+3              
+
+==========================================
+[쿼리 14-2] 업데이트 후 확인
+==========================================
+detail_id  title                  expiry_date  status 
+---------  ---------------------  -----------  -------
+26         Europe Trip Itinerary  2024-08-31   archive
+23         Medication List        2025-06-30   active 
+21         Government ID          2025-12-31   active 
+
+==========================================
+[쿼리 15] 비활성 사용자의 항목 조회 (DELETE 검토)
+무엇을 확인: 비활성 사용자(is_active=0)가 저장한 항목
+==========================================
+user_id  username      is_active  item_count
+-------  ------------  ---------  ----------
+9        sarah_connor  0          0         
+
+==========================================
+[쿼리 17] 중요 표시 비율 분석 (GROUP BY + 조건부 COUNT)
+무엇을 확인: 카테고리별 전체 항목 중 중요 표시된 항목의 비율
+==========================================
+category_name  total_items  important_items  importance_ratio
+-------------  -----------  ---------------  ----------------
+documents      8            8                100.0           
+educational    6            6                100.0           
+finance        6            5                83.33           
+health         6            5                83.33           
+work           6            3                50.0            
+photos         6            2                33.33           
+notes          10           3                30.0            
+contacts       6            0                0.0             
+travel         6            0                0.0             
+personal       0            0                                
+
+==========================================
+[쿼리 19] 사용자별 저장소 사용량 분석 (GROUP BY + SUM + 정렬)
+무엇을 확인: 각 사용자가 사용 중인 저장소 용량 순위
+==========================================
+user_id  username       item_count  total_size_mb  total_size_gb
+-------  -------------  ----------  -------------  -------------
+6        choi_yu        10          157.45         0.154        
+2        jane_smith     10          112.89         0.11         
+4        kim_sung       10          62.84          0.061        
+1        john_doe       10          59.4           0.058        
+3        park_min       10          40.98          0.04         
+5        lee_ji         10          35.91          0.035        
+7        jung_ho        0           0.0            0.0          
+8        alex_brown     0           0.0            0.0          
+9        sarah_connor   0           0.0            0.0          
+10       michael_scott  0           0.0            0.0          
+11       emily_davis    0           0.0            0.0          
+12       david_lee      0           0.0            0.0          
+13       sophia_wang    0           0.0            0.0          
+14       james_wilson   0           0.0            0.0          
+15       olivia_martin  0           0.0            0.0          
+
+==========================================
+[쿼리 20] 항목 유형별 파일 통계 (GROUP BY + mime_type 필터)
+무엇을 확인: MIME 타입별 항목 개수 및 평균 크기
+==========================================
+file_type  count  avg_size    min_size    max_size   
+---------  -----  ----------  ----------  -----------
+Text       21     1463.0      256.0       4096.0     
+PDF        16     1732608.0   1024000.0   3145728.0  
+Office     16     2293760.0   1048576.0   5242880.0  
+Archive    6      70778880.0  26214400.0  157286400.0
+Image      1      3145728.0   3145728.0   3145728.0  
+
+==========================================
+쿼리 실행 완료
+==========================================
